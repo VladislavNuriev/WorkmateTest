@@ -23,3 +23,4 @@ rootProject.name = "Workmate Test"
 include(":app")
 include(":core:network")
 include(":domain")
+include(":core:database")
