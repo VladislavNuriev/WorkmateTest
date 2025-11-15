@@ -49,7 +49,7 @@ fun User.toEntity(): UserEntity {
         phone = phone,
         cell = cell,
         nationality = nationality,
-        pictureFilePath = pictureFilePath
+        pictureFilePath = pictureFileName
     )
 }
 
@@ -70,6 +70,6 @@ fun UserEntity.toDomain(): User {
         phone = phone,
         cell = cell,
         nationality = nationality,
-        pictureFilePath = pictureFilePath
+        pictureFileName = pictureFilePath
     )
 }

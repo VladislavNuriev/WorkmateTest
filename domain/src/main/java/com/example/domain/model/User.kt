@@ -16,5 +16,5 @@ data class User(
     val phone: String,
     val cell: String,
     val nationality: String,
-    val pictureFilePath: String
+    val pictureFileName: String
 )
