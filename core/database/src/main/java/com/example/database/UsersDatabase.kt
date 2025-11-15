@@ -7,7 +7,7 @@ import androidx.room.RoomDatabase
 
 @Database(
     entities = [UserEntity::class],
-    version = 1,
+    version = 3,
     exportSchema = false
 )
 abstract class UsersDatabase : RoomDatabase() {
@@ -31,6 +31,7 @@ abstract class UsersDatabase : RoomDatabase() {
                     UsersDatabase::class.java,
                     "notes.db"
                 )
+                    .fallbackToDestructiveMigration(true)
                     .build()
                 instance = db
                 return db

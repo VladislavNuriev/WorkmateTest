@@ -42,7 +42,8 @@ android {
 }
 
 dependencies {
-    implementation(project(":core:network")) // TODO: remove line
+    implementation(project(":domain")) //TODO: remove line
+    implementation(project(":data"))
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)

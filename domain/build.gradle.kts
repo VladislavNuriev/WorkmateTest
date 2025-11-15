@@ -16,7 +16,7 @@ kotlin {
 dependencies{
     implementation(libs.kotlinx.coroutines.core)
 
-    //Hilt
-    implementation(libs.hilt.android)
-    ksp(libs.hilt.android.compiler)
+    //Dagger
+    implementation(libs.dagger)
+    ksp(libs.dagger.compiler)
 }
