@@ -13,7 +13,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.lifecycle.lifecycleScope
-import com.example.network.ApiService
+import com.example.domain.usecases.DeleteUserUseCase
+import com.example.domain.usecases.GetSavedUsersUseCase
+import com.example.domain.usecases.GetUserByIdUseCase
+import com.example.domain.usecases.SaveRandomUserUseCase
 import com.example.workmatetest.ui.theme.WorkmateTestTheme
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
@@ -23,14 +26,31 @@ import javax.inject.Inject
 class MainActivity : ComponentActivity() {
 
     @Inject
-    lateinit var apiService: ApiService
+    lateinit var saveRandomUser: SaveRandomUserUseCase
+    @Inject
+    lateinit var getUserById: GetUserByIdUseCase
+    @Inject
+    lateinit var deleteUser: DeleteUserUseCase
+    @Inject
+    lateinit var getSavedUsers: GetSavedUsersUseCase
+
+    private val TAG = "MainActivity"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         lifecycleScope.launch {
-            val response = apiService.getUser("female", nat = "gb")
-            Log.d("MainActivity", "onCreate: ${response.toString()}")
+            saveRandomUser("female", nationality = "gb").onSuccess {
+                Log.d(TAG, "onCreate: ")
+                val user = getUserById(2)
+                Log.d(TAG, "onCreate: ${user.toString()}")
+                //deleteUser(userId = 1, imageFilePath = user.pictureFilePath)
+                val users = getSavedUsers("").collect {
+                    Log.d(TAG, "onCreate: ${it}")
+                }
+            }.onFailure {
+                Log.d(TAG, "onCreate: $it")
+            }
         }
 
         enableEdgeToEdge()
