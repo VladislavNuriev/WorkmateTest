@@ -47,7 +47,7 @@ class ImageFileManager @Inject constructor(
                 okHttpClient.newCall(request).execute().use { response ->
                     if (!response.isSuccessful) {
                         Log.w("ImageDownloader", "HTTP error: ${response.code}")
-                        return@withContext placeholderFile.absolutePath
+                        return@withContext placeholderFile.name
                     } else {
                         val byteStream = response.body.byteStream()
 
@@ -58,7 +58,7 @@ class ImageFileManager @Inject constructor(
                             byteStream.copyTo(output)
                         }
 
-                        return@withContext file.absolutePath
+                        return@withContext file.name
                     }
                 }
 
@@ -66,12 +66,12 @@ class ImageFileManager @Inject constructor(
             } catch (e: Exception) {
                 Log.e("ImageDownloader", "Failed to download image: $e")
             }
-            return@withContext if (placeholderFile.exists()) placeholderFile.absolutePath else ""
+            return@withContext if (placeholderFile.exists()) placeholderFile.name else ""
         }
     }
 
-    fun deleteImage(filePath: String) {
-        val file = File(filePath)
+    fun deleteImage(fileName: String) {
+        val file = File(imagesDir, fileName)
         if (file.exists() && file.name != "avatar_placeholder.png") {
             file.delete()
         }

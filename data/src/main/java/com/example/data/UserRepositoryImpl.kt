@@ -1,11 +1,9 @@
 package com.example.data
 
-import android.content.Context
 import com.example.database.UserDao
 import com.example.domain.UserRepository
 import com.example.domain.model.User
 import com.example.network.ApiService
-import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
@@ -16,7 +14,6 @@ class UserRepositoryImpl @Inject constructor(
     private val apiService: ApiService,
     private val userDao: UserDao,
     private val imageFileManager: ImageFileManager,
-    @ApplicationContext private val context: Context
 ) : UserRepository {
 
     override suspend fun getUserById(userId: Int): User {

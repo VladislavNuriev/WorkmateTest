@@ -1,6 +1,5 @@
 package com.example.generateuser
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.domain.usecases.SaveRandomUserUseCase
@@ -9,6 +8,7 @@ import com.example.generateuser.ui.GenerateUserScreenState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -20,7 +20,7 @@ class GenerateUserViewModel @Inject constructor(
     private val _state = MutableStateFlow<GenerateUserScreenState>(
         GenerateUserScreenState.Generate()
     )
-    val state: StateFlow<GenerateUserScreenState> = _state
+    val state: StateFlow<GenerateUserScreenState> = _state.asStateFlow()
 
     fun handleIntent(intent: GenerateUserIntent) {
         when (intent) {

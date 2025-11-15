@@ -12,6 +12,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.generateuser.ui.GenerateUserScreen
+import com.example.users.UsersScreen
 import com.example.workmatetest.ui.theme.WorkmateTestTheme
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -25,7 +26,10 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             WorkmateTestTheme {
-                GenerateUserScreen {  }
+                UsersScreen(
+                    onUserClick = {},
+                    onAddUserClick = {}
+                )
             }
         }
     }
