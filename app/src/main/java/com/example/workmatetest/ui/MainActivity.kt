@@ -1,19 +1,14 @@
-package com.example.workmatetest
+package com.example.workmatetest.ui
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import com.example.generateuser.ui.GenerateUserScreen
 import com.example.profile.UserProfileScreen
-import com.example.users.UsersScreen
 import com.example.workmatetest.ui.theme.WorkmateTestTheme
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -27,10 +22,7 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             WorkmateTestTheme {
-                UserProfileScreen(
-                    userId = 6,
-                    onFinished = {}
-                )
+                NavGraph()
             }
         }
     }

@@ -10,6 +10,4 @@ sealed interface GenerateUserScreenState {
         val isSaveEnabled: Boolean
             get() = gender.isNotBlank() && nationality.isNotBlank() && !isLoading
     }
-
-    data object Finished : GenerateUserScreenState
 }

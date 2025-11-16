@@ -40,7 +40,7 @@ import com.example.generateuser.helper.Nationality
 fun GenerateUserScreen(
     modifier: Modifier = Modifier,
     viewModel: GenerateUserViewModel = hiltViewModel(),
-    onFinished: () -> Unit
+    navigateToUsers: () -> Unit
 ) {
     val state by viewModel.state.collectAsState()
 
@@ -82,12 +82,11 @@ fun GenerateUserScreen(
                     },
                     onGenerateClicked = {
                         viewModel.handleIntent(GenerateUserIntent.GenerateUser)
-                    }
+                    },
+                    onGoToUsersClicked = navigateToUsers
                 )
             }
         }
-
-        is GenerateUserScreenState.Finished -> onFinished()
     }
 }
 
@@ -99,7 +98,8 @@ private fun GenerateUser(
     state: GenerateUserScreenState.Generate,
     onGenderSelected: (String) -> Unit,
     onNationalitySelected: (String) -> Unit,
-    onGenerateClicked: () -> Unit
+    onGenerateClicked: () -> Unit,
+    onGoToUsersClicked: () -> Unit
 ) {
     Column(
         modifier = modifier
@@ -153,6 +153,15 @@ private fun GenerateUser(
             } else {
                 Text(text = "Generate")
             }
+        }
+        Button(
+            onClick = onGoToUsersClicked,
+            modifier = Modifier
+                .align(Alignment.CenterHorizontally)
+                .padding(bottom = 16.dp)
+                .fillMaxWidth()
+        ) {
+            Text(text = "Открыть список пользователей")
         }
     }
 }
