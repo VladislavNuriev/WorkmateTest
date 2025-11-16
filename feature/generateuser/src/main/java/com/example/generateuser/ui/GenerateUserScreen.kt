@@ -161,7 +161,7 @@ private fun GenerateUser(
                 .padding(bottom = 16.dp)
                 .fillMaxWidth()
         ) {
-            Text(text = "Открыть список пользователей")
+            Text(text = "Go to Users")
         }
     }
 }

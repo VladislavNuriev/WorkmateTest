@@ -35,6 +35,7 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.material3.TopAppBar
+import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -57,6 +58,7 @@ import androidx.core.net.toUri
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import coil.compose.rememberAsyncImagePainter
 import com.example.domain.model.User
+import com.example.ui.theme.Gradient
 import java.io.File
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -81,7 +83,13 @@ fun UsersScreen(
                         )
                     }
                 },
-                title = {}
+                title = {},
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .background(brush = Gradient.PrimaryGradient),
+                colors = TopAppBarDefaults.topAppBarColors(
+                    containerColor = Color.Transparent
+                )
             )
         },
         floatingActionButton = {
@@ -89,7 +97,7 @@ fun UsersScreen(
                 onClick = onAddUserClick,
                 containerColor = MaterialTheme.colorScheme.primary,
                 contentColor = MaterialTheme.colorScheme.onPrimary,
-                shape = CircleShape
+                shape = RoundedCornerShape(10.dp)
             ) {
                 Icon(
                     imageVector = Icons.Default.Add,
@@ -178,7 +186,7 @@ private fun SearchBar(
                     Text(
                         text = "Введи имя...",
                         fontSize = 15.sp,
-                        color = MaterialTheme.colorScheme.onSecondary,
+                        color = MaterialTheme.colorScheme.secondary,
                         fontWeight = FontWeight.Normal
                     )
                 }
@@ -197,7 +205,7 @@ private fun SearchBar(
                         imageVector = Icons.Default.Cancel,
                         contentDescription = "Clear search",
                         Modifier.clickable { onQueryChanged("") },
-                        tint = MaterialTheme.colorScheme.onSecondary
+                        tint = MaterialTheme.colorScheme.primary
                     )
                 } else if (isFocused) {
                     Box(Modifier.size(24.dp))
@@ -205,12 +213,12 @@ private fun SearchBar(
             },
             shape = RoundedCornerShape(16.dp),
             colors = TextFieldDefaults.colors(
-                unfocusedContainerColor = MaterialTheme.colorScheme.secondary,
-                focusedContainerColor = MaterialTheme.colorScheme.secondary,
-                unfocusedTextColor = MaterialTheme.colorScheme.onSecondary,
-                focusedTextColor = MaterialTheme.colorScheme.onSurface,
-                unfocusedLeadingIconColor = MaterialTheme.colorScheme.onSecondary,
-                focusedLeadingIconColor = MaterialTheme.colorScheme.onSurface,
+                unfocusedContainerColor = MaterialTheme.colorScheme.tertiaryContainer,
+                focusedContainerColor = MaterialTheme.colorScheme.tertiaryContainer,
+                unfocusedTextColor = MaterialTheme.colorScheme.secondary,
+                focusedTextColor = MaterialTheme.colorScheme.secondary,
+                unfocusedLeadingIconColor = MaterialTheme.colorScheme.primary,
+                focusedLeadingIconColor = MaterialTheme.colorScheme.primary,
                 unfocusedTrailingIconColor = MaterialTheme.colorScheme.onSecondary,
                 focusedIndicatorColor = Color.Transparent,
                 unfocusedIndicatorColor = Color.Transparent,
@@ -227,7 +235,7 @@ private fun SearchBar(
                         focusManager.clearFocus()
                         onQueryChanged("")
                     },
-                color = MaterialTheme.colorScheme.primaryFixed,
+                color = MaterialTheme.colorScheme.primary,
                 fontSize = 14.sp,
                 fontWeight = FontWeight.SemiBold
             )

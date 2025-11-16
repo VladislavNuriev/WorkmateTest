@@ -44,6 +44,7 @@ android {
 dependencies {
     implementation(project(":data"))
     implementation(project(":domain"))
+    implementation(project(":core:ui"))
     implementation(project(":feature:generateuser"))
     implementation(project(":feature:users"))
     implementation(project(":feature:profile"))

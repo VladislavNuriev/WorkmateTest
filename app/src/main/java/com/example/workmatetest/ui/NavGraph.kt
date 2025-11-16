@@ -6,7 +6,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.generateuser.ui.GenerateUserScreen
-import com.example.profile.UserProfileScreen
+import com.example.profile.ui.UserProfileScreen
 import com.example.users.UsersScreen
 
 @Composable

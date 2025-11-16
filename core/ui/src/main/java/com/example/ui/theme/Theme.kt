@@ -1,4 +1,4 @@
-package com.example.workmatetest.ui.theme
+package com.example.ui.theme
 
 import android.os.Build
 import androidx.compose.material3.MaterialTheme
@@ -18,6 +18,7 @@ private val LightColorScheme = lightColorScheme(
     onPrimary = White,
     secondary = Grey,
     background = White,
+    tertiaryContainer = LightBlue
 )
 
 @Composable
