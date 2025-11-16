@@ -1,4 +1,4 @@
-package com.example.profile
+package com.example.profile.ui
 
 import com.example.domain.model.User
 
@@ -9,5 +9,3 @@ sealed interface UserProfileScreenState {
         val user: User
     ): UserProfileScreenState
 }
-
-

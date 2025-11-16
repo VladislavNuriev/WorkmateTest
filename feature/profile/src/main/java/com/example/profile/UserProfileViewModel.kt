@@ -3,6 +3,7 @@ package com.example.profile
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.domain.usecases.GetUserByIdUseCase
+import com.example.profile.ui.UserProfileScreenState
 import dagger.assisted.Assisted
 import dagger.assisted.AssistedFactory
 import dagger.assisted.AssistedInject

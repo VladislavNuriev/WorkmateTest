@@ -1,4 +1,4 @@
-package com.example.profile.ui
+package com.example.ui.theme
 
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
