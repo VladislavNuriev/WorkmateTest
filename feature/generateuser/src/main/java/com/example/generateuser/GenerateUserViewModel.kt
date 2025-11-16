@@ -59,7 +59,7 @@ class GenerateUserViewModel @Inject constructor(
         viewModelScope.launch {
             saveRandomUser(currentState.gender, currentState.nationality)
                 .onSuccess {
-                    _state.value = GenerateUserScreenState.Finished
+                    _state.value = currentState.copy(isLoading = false)
                 }.onFailure {
                     val errorMsg = it.message ?: "Unknown error"
                     _state.value = currentState.copy(isLoading = false, error = errorMsg)
